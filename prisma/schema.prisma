@@ -11,19 +11,21 @@ datasource db {
 }
 
 model User {
-    id       Int     @id @default(autoincrement())
-    username String  @unique
-    email    String  @unique
-    password String
-    movies   Movie[]
+    id        Int      @id @default(autoincrement())
+    updatedAt DateTime @updatedAt
+    username  String   @unique
+    email     String   @unique
+    password  String
+    movies    Movie[]
 }
 
 model Movie {
-    id           Int     @id @default(autoincrement())
+    id           Int      @id @default(autoincrement())
+    updatedAt    DateTime @updatedAt
     movieName    String
     description  String
     directorName String
-    releaseDate  Boolean @default(false)
-    creator      User    @relation(fields: [creatorId], references: [id])
+    releaseDate  DateTime @default(now())
+    creator      User     @relation(fields: [creatorId], references: [id])
     creatorId    Int
 }
