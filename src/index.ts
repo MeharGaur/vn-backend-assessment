@@ -8,8 +8,8 @@ import express from 'express';
 import http from 'http';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import { typeDefs } from './typeDefs.js';
-import { resolvers } from './resolvers.js';
+import { typeDefs } from './graphql/typeDefs.js';
+import { resolvers } from './graphql/resolvers.js';
 import { Context, createContext } from "./context.js";
 
 
