@@ -1,8 +1,8 @@
 {
     "compilerOptions": {
-        "sourceMap": true,
-        "rootDirs": ["src"],
-        "outDir": "dist",
+        "baseUrl": "./src",
+        "rootDir": "./src",
+        "outDir": "./dist",
         "lib": [
             "esnext"
         ],
@@ -12,6 +12,10 @@
         "esModuleInterop": true,
         "types": [
             "node"
-        ]
+        ],
+        "allowSyntheticDefaultImports": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "sourceMap": true
     }
 }

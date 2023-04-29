@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import { User } from "@prisma/client";
-import { Context } from "./context";
+import { Context } from "./context.js";
 import { GraphQLError } from "graphql";
 
 

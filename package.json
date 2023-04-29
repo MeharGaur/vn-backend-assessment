@@ -7,7 +7,7 @@
         "test": "echo \"Error: no test specified\" && exit 1",
         "dev": "ts-node-esm src/index.ts",
         "compile": "tsc",
-        "start": "npm run compile && node ./dist/src/index.js"
+        "start": "rm -rf dist && npm run compile && node ./dist/index.js"
     },
     "prisma": {
         "seed": "ts-node --transpile-only prisma/seed.ts"
