@@ -24,7 +24,7 @@ export const typeDefs = `#graphql
     createMovie: Movie
     updateMovie: Movie
     deleteMovie: Movie
-    # signUp: User
+    signUp: String
     # login: User
     # changePassword: User
   }
