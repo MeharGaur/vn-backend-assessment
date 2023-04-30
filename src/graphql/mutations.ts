@@ -1,6 +1,6 @@
 import { GraphQLError } from "graphql";
-import { comparePasswords, createJWT, hashPassword, mustBeAuthenticated, mustBeOwner, mustNotBeAuthenticated } from "../auth.js";
-import { Context } from "../context.js";
+import { comparePasswords, createJWT, hashPassword, mustBeAuthenticated, mustBeOwner, mustNotBeAuthenticated } from "../auth";
+import { Context } from "../context";
 
 
 export const Mutations = {

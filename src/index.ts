@@ -8,9 +8,9 @@ import express from 'express';
 import http from 'http';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import { typeDefs } from './graphql/typeDefs.js';
-import { resolvers } from './graphql/resolvers.js';
-import { Context, createContext } from "./context.js";
+import { typeDefs } from './graphql/typeDefs';
+import { resolvers } from './graphql/resolvers';
+import { Context, createContext } from "./context";
 
 
 export const app = express();
@@ -22,6 +22,7 @@ const server = new ApolloServer<Context>({
     // Use drain http server plugin for graceful shutdown
     plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
 });
+
 
 (async () => {
     await server.start();

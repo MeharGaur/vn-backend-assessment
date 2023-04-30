@@ -6,17 +6,18 @@
         "lib": [
             "esnext"
         ],
-        "target": "es2020",
-        "module": "esnext",
+        "module": "commonjs",
         "moduleResolution": "node",
-        "esModuleInterop": true,
         "types": [
             "node",
             "jest"
         ],
+        "sourceMap": true,
         "allowSyntheticDefaultImports": true,
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
-        "sourceMap": true
-    }
+        "esModuleInterop": true
+    },
+    "exclude": [
+        "node_modules",
+        "dist"
+    ]
 }

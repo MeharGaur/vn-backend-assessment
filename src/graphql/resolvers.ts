@@ -1,5 +1,5 @@
-import { Queries } from "./queries.js";
-import { Mutations } from "./mutations.js";
+import { Queries } from "./queries";
+import { Mutations } from "./mutations";
 
 
 // TODO: Argument types for 'args'

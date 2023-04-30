@@ -14,6 +14,7 @@ TODO
 ## Testing:
 - Unit testing using `jest`
 - Integration testing of the GraphQL endpoint using `supertest` 
+    - I wrote integration tests for all of the mutations in [mutations.test.ts](src/graphql/tests/mutations.test.ts). I tested the queries in the video above using Apollo Studio.
 
 ## Hosting:
 - PostgreSQL instance hosted on my Google Cloud account

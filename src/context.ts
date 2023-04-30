@@ -1,7 +1,7 @@
 import { PrismaClient } from '@prisma/client';
 import { Response, Request } from "express";
 import jwt from 'jsonwebtoken';
-import { UserFromJWT } from "./auth.js";
+import { UserFromJWT } from "./auth";
 
 
 export type Context = {
