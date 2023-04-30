@@ -1,5 +1,13 @@
+import { comparePasswords, hashPassword } from "../auth";
+
 describe("Auth Utils:", () => {
-    it("should do something test", () => {
-        expect(1).toBe(1);
+    // Correctly hashes password
+    it("hashes and compares passwords", async () => {
+        const password = "password";
+        const hashedPassword = await hashPassword(password);
+        expect(hashedPassword).not.toEqual(password);
+
+        const isMatch = await comparePasswords(password, hashedPassword);
+        expect(isMatch).toBe(true);
     });
 });
