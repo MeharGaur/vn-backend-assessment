@@ -32,7 +32,7 @@ export const createContext = async (
             isAuthenticated = true;
         }
         catch (error) {
-            console.error(error);
+            console.log(error.message);
         }
     }
 

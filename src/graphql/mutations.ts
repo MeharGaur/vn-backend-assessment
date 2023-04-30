@@ -7,13 +7,15 @@ export const Mutations = {
     async createMovie(parent, args: CreateMovieArgs, context: Context) {
         mustBeAuthenticated(context);
 
+        mustBeOwner(context, { creatorId: args.userId });
+
         return await context.prisma.movie.create({
             data: {
                 movieName: args.movieName,
                 description: args.description,
                 directorName: args.directorName,
                 releaseDate: args.releaseDate,
-                creator: { connect: { username: args.username } },
+                creator: { connect: { id: args.userId } },
             },
         });
     },
@@ -22,13 +24,13 @@ export const Mutations = {
         mustBeAuthenticated(context);
 
         const movie = await context.prisma.movie.findUnique({
-            where: { id: args.id || undefined },
+            where: { id: args.movieId || undefined },
         });
 
         mustBeOwner(context, movie);
 
         return await context.prisma.movie.update({
-            where: { id: args.id || undefined },
+            where: { id: args.movieId || undefined },
             data: {
                 movieName: args.movieName,
                 description: args.description,
@@ -42,13 +44,13 @@ export const Mutations = {
         mustBeAuthenticated(context);
 
         const movie = await context.prisma.movie.findUnique({
-            where: { id: args.id || undefined },
+            where: { id: args.movieId || undefined },
         });
 
         mustBeOwner(context, movie);
 
         return await context.prisma.movie.delete({
-            where: { id: args.id || undefined },
+            where: { id: args.movieId || undefined },
         });
     },
 
@@ -94,7 +96,7 @@ export const Mutations = {
 
         const user = await context.prisma.user.findUnique({
             where: {
-                username: args.username,
+                id: args.userId,
             }
         });
 
@@ -117,7 +119,7 @@ export const Mutations = {
         const newPassword = await hashPassword(args.newPassword);
 
         return await context.prisma.user.update({
-            where: { username: args.username },
+            where: { id: args.userId },
             data: { password: newPassword },
         });
     }
@@ -129,11 +131,11 @@ type CreateMovieArgs = {
     description: string;
     directorName: string;
     releaseDate: Date;
-    username: string;
+    userId: number;
 };
 
 type UpdateMovieArgs = {
-    id: number;
+    movieId: number;
     movieName: string;
     description: string;
     directorName: string;
@@ -141,7 +143,7 @@ type UpdateMovieArgs = {
 };
 
 type DeleteMovieArgs = {
-    id: number;
+    movieId: number;
 };
 
 type SignUpArgs = {
@@ -156,7 +158,7 @@ type LogInArgs = {
 };
 
 type ChangePasswordArgs = {
-    username: string;
+    userId: number;
     password: string;
     newPassword: string;
 };

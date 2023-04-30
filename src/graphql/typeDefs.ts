@@ -16,12 +16,13 @@ type Movie {
   directorName: String
   releaseDate: DateTime
   updatedAt: DateTime
-  creator: User
+  creatorId: Int
 }
 
 
 type Query {
-  movieById(id: Int!): Movie
+  movieById(movieId: Int!): Movie
+  movieByUserId(userId: Int!): [Movie]
   queryMovies(
       orderBy: MovieOrderByReleaseDateInput, 
       searchString: String, 
@@ -45,19 +46,19 @@ type Mutation {
       movieName: String!,
       description: String!,
       directorName: String!,
-      releaseDate: DateTime!,
-      username: String!,
+      releaseDate: DateTime,
+      userId: Int!,
   ): Movie
 
   updateMovie(
-      id: Int!,
-      movieName: String!,
-      description: String!,
-      directorName: String!,
-      releaseDate: DateTime!,
+      movieId: Int!,
+      movieName: String,
+      description: String,
+      directorName: String,
+      releaseDate: DateTime,
   ): Movie
   
-  deleteMovie(id: Int!): Movie
+  deleteMovie(movieId: Int!): Movie
 
   signUp(
       username: String!,
@@ -71,7 +72,7 @@ type Mutation {
   ): String
 
   changePassword(
-      username: String!,
+      userId: Int!,
       password: String!,
       newPassword: String!
   ): User

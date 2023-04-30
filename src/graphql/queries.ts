@@ -3,7 +3,13 @@ import { Context } from "../context.js";
 export const Queries = {
     async movieById(parent, args: MovieByIdArgs, context: Context) {
         return await context.prisma.movie.findUnique({
-            where: { id: args.id || undefined },
+            where: { id: args.movieId || undefined },
+        });
+    },
+
+    async movieByUserId(parent, args: MovieByUserIdArgs, context: Context) {
+        return await context.prisma.movie.findMany({
+            where: { creatorId: args.userId || undefined },
         });
     },
 
@@ -28,7 +34,11 @@ export const Queries = {
 
 
 type MovieByIdArgs = {
-    id: number;
+    movieId: number;
+};
+
+type MovieByUserIdArgs = {
+    userId: number;
 };
 
 type QueryMoviesArgs = {
