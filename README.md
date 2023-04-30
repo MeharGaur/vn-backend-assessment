@@ -13,7 +13,7 @@ TODO
 
 ## Testing:
 - Unit testing using `jest`
-- End-to-end testing of the GraphQL endpoint using `supertest` 
+- Integration testing of the GraphQL endpoint using `supertest` 
 
 ## Hosting:
 - PostgreSQL instance hosted on my Google Cloud account

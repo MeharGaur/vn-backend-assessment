@@ -12,7 +12,7 @@ export type Context = {
 };
 
 
-const prisma = new PrismaClient();
+export const prisma = new PrismaClient();
 
 
 // Verify JWT here in the context so that it's available in all resolvers
